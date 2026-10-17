@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
+import PasswordInput from "../components/PasswordInput";
 
 export default function Register() {
   const { register } = useAuth();
@@ -45,6 +46,7 @@ export default function Register() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="At least 3 characters"
+            autoComplete="username"
             autoFocus
           />
         </div>
@@ -55,26 +57,27 @@ export default function Register() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
+            autoComplete="email"
           />
         </div>
 
         <div className="field">
           <label>Password</label>
-          <input
-            type="password"
+          <PasswordInput
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="At least 6 characters"
+            autoComplete="new-password"
           />
         </div>
 
         <div className="field">
           <label>Confirm password</label>
-          <input
-            type="password"
+          <PasswordInput
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
             placeholder="Type it again"
+            autoComplete="new-password"
           />
         </div>
 

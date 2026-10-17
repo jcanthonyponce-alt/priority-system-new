@@ -22,6 +22,7 @@ import { useAuth } from "../AuthContext";
 import { useTheme } from "../ThemeContext";
 import { api } from "../api";
 import TopSearch from "./TopSearch";
+import Avatar from "./Avatar";
 import "./app.css";
 import "./layout-extra.css";
 
@@ -232,7 +233,7 @@ export default function Layout() {
 
           <div className="user-menu" ref={menuRef}>
             <button className="user-chip" onClick={() => setMenuOpen((o) => !o)}>
-              <span className="avatar">{user.username[0].toUpperCase()}</span>
+                            <Avatar user={user} />
               <span>{user.username}</span>
               <ChevronDown size={16} />
             </button>

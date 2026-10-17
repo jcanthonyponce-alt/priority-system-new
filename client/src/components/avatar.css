@@ -1,0 +1,17 @@
+img.avatar {
+  object-fit: cover;
+  display: block;
+}
+
+img.big-avatar {
+  object-fit: cover;
+  display: block;
+}
+
+.photo-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 4px 0 14px;
+}

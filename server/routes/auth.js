@@ -30,6 +30,8 @@ const publicUser = (u) => ({
   id: u.id,
   username: u.username,
   email: u.email,
+  fullName: u.fullName || "",
+  avatar: u.avatar || "",
   role: u.role,
   createdAt: u.createdAt,
 });
@@ -91,16 +93,41 @@ router.get("/me", authRequired, (req, res) => {
   res.json({ user: publicUser(user) });
 });
 
-// Update profile (email)
+// Update profile: email, full name and profile photo
 router.put("/me", authRequired, (req, res) => {
   const user = usersByName.get(req.user.username.toLowerCase());
   if (!user) return res.status(401).json({ error: "Account no longer exists" });
 
-  const { email } = req.body;
-  if (!email || !EMAIL_RE.test(email)) {
-    return res.status(400).json({ error: "Enter a valid email" });
+  const { email, fullName, avatar } = req.body;
+
+  if (email !== undefined) {
+    if (!email || !EMAIL_RE.test(email)) {
+      return res.status(400).json({ error: "Enter a valid email" });
+    }
+    user.email = email.trim();
   }
-  user.email = email.trim();
+
+  if (fullName !== undefined) {
+    const name = String(fullName).trim();
+    if (name.length > 60) {
+      return res.status(400).json({ error: "Name is too long (60 characters at most)" });
+    }
+    user.fullName = name;
+  }
+
+  if (avatar !== undefined) {
+    if (!avatar) {
+      user.avatar = ""; // remove the photo
+    } else {
+      const ok =
+        typeof avatar === "string" && avatar.startsWith("data:image/") && avatar.length <= 90000;
+      if (!ok) {
+        return res.status(400).json({ error: "That picture is not valid or is too large" });
+      }
+      user.avatar = avatar;
+    }
+  }
+
   save();
   res.json({ user: publicUser(user) });
 });
