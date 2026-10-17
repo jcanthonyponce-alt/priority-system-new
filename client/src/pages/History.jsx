@@ -87,7 +87,7 @@ export default function History() {
         {tab === "archive" && (
           <>
             <div className="hist-note">
-              The archive works like a stack: the task you deleted last is always on top.
+                            Deleted tasks are kept here. Click Restore to bring one back.
             </div>
             {archived.length === 0 ? (
               <p className="empty">The archive is empty. Deleted tasks will show up here.</p>
