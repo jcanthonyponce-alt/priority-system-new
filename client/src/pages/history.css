@@ -1,0 +1,103 @@
+.hist-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 22px 0;
+}
+
+.hist-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.hist-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hist-icon.archive {
+  background: color-mix(in srgb, var(--total-main) 16%, transparent);
+  color: var(--total-main);
+}
+
+.hist-icon.done {
+  background: color-mix(in srgb, var(--low-main) 16%, transparent);
+  color: var(--low-main);
+}
+
+.hist-num {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hist-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.hist-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.hist-note {
+  margin: 14px 0 6px;
+  padding: 11px 14px;
+  background: var(--accent-soft);
+  border-radius: 10px;
+  font-size: 0.87rem;
+}
+
+.hist-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+
+.hist-row:first-of-type {
+  margin-top: 8px;
+}
+
+.hist-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.hist-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hist-sub {
+  color: var(--muted);
+  font-size: 0.83rem;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 700px) {
+  .hist-row {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,396 @@
+/* ================= OCEAN GLASS ================= */
+[data-theme="ocean"] {
+  --page-bg:
+    radial-gradient(circle at 15% 10%, rgba(88, 160, 255, 0.55), transparent 40%),
+    radial-gradient(circle at 90% 85%, rgba(20, 80, 230, 0.55), transparent 45%),
+    linear-gradient(135deg, #0a2a9a 0%, #0b45d8 50%, #082075 100%);
+  --card: rgba(255, 255, 255, 0.1);
+  --text: #f2f7ff;
+  --muted: #b9cff7;
+  --border: rgba(255, 255, 255, 0.26);
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --accent: #4ea1ff;
+  --accent-dark: #2f86ec;
+  --accent-soft: rgba(255, 255, 255, 0.16);
+  --shadow: 0 8px 30px rgba(3, 20, 90, 0.35);
+  --logo-bg: linear-gradient(135deg, #69b2ff, #2f7bff);
+
+  --side-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07));
+  --side-text: #eaf2ff;
+  --side-muted: #a9c4f5;
+  --side-hover: rgba(255, 255, 255, 0.12);
+  --side-active: linear-gradient(90deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.14));
+  --side-card: rgba(255, 255, 255, 0.12);
+
+  --danger-bg: rgba(255, 80, 110, 0.25);
+  --danger-text: #ffc2cf;
+
+  --high-bg: linear-gradient(135deg, rgba(255, 90, 120, 0.4), rgba(255, 255, 255, 0.08));
+  --high-border: rgba(255, 150, 170, 0.55);
+  --high-main: #ff6b88;
+  --med-bg: linear-gradient(135deg, rgba(255, 190, 70, 0.4), rgba(255, 255, 255, 0.08));
+  --med-border: rgba(255, 210, 120, 0.55);
+  --med-main: #ffc247;
+  --low-bg: linear-gradient(135deg, rgba(40, 220, 210, 0.38), rgba(255, 255, 255, 0.08));
+  --low-border: rgba(120, 240, 230, 0.55);
+  --low-main: #3fe3d3;
+  --total-bg: linear-gradient(135deg, rgba(90, 160, 255, 0.45), rgba(255, 255, 255, 0.08));
+  --total-border: rgba(160, 205, 255, 0.6);
+  --total-main: #7bb8ff;
+
+  color-scheme: dark;
+}
+
+/* ================= NEON NIGHT ================= */
+[data-theme="neon"] {
+  --page-bg:
+    radial-gradient(circle at 0% 100%, rgba(168, 85, 247, 0.5), transparent 38%),
+    radial-gradient(circle at 80% 0%, rgba(236, 72, 153, 0.22), transparent 35%),
+    linear-gradient(135deg, #06061a 0%, #0a0a26 100%);
+  --card: #0d0f33;
+  --text: #f3f2ff;
+  --muted: #9b9dc9;
+  --border: rgba(139, 92, 246, 0.3);
+  --input-bg: #090b2a;
+  --accent: #8b5cf6;
+  --accent-dark: #7c3aed;
+  --accent-soft: rgba(139, 92, 246, 0.2);
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --logo-bg: linear-gradient(135deg, #ec4899, #7c3aed);
+
+  --side-bg: linear-gradient(180deg, #0a0a26 0%, #14092f 60%, #2a0e55 100%);
+  --side-text: #dcdcff;
+  --side-muted: #8c8fc4;
+  --side-hover: rgba(139, 92, 246, 0.18);
+  --side-active: linear-gradient(90deg, #7c3aed, #c026d3);
+  --side-card: rgba(255, 255, 255, 0.07);
+
+  --danger-bg: rgba(244, 63, 94, 0.2);
+  --danger-text: #fda4af;
+
+  --high-bg: linear-gradient(135deg, #b3410c, #f59e0b);
+  --high-border: rgba(255, 170, 70, 0.7);
+  --high-main: #ff4d8d;
+  --med-bg: linear-gradient(135deg, #2b2f9e, #4f46e5);
+  --med-border: rgba(129, 140, 248, 0.7);
+  --med-main: #fbbf24;
+  --low-bg: linear-gradient(135deg, #075985, #06b6d4);
+  --low-border: rgba(34, 211, 238, 0.6);
+  --low-main: #22d3ee;
+  --total-bg: linear-gradient(135deg, #3b2a9a, #7c3aed);
+  --total-border: rgba(167, 139, 250, 0.7);
+  --total-main: #a78bfa;
+
+  color-scheme: dark;
+}
+
+/* ---------- glass effect (Ocean only) ---------- */
+[data-theme="ocean"] :is(
+    .dpanel, .pcard, .card, .form-card, .acc-card, .tasks-layout, .cal-card,
+    .hist-panel, .hist-card, .notif-panel, .icon-btn, .user-chip, .theme-pill, .sidebar
+  ) {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* pop-ups need a solid background so the text stays readable */
+[data-theme="ocean"] :is(.menu, .modal, .palette-menu) {
+  background: #123fa8;
+  backdrop-filter: none;
+}
+
+/* floating sidebar like the Ocean design (desktop only) */
+@media (min-width: 801px) {
+  [data-theme="ocean"] .sidebar {
+    margin: 14px 0 14px 14px;
+    height: calc(100vh - 28px);
+    top: 14px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ---------- colorful cards: readable text on the gradients ---------- */
+:is([data-theme="ocean"], [data-theme="neon"]) :is(.pcard-head, .pcard-arrow) {
+  color: #fff;
+}
+
+:is([data-theme="ocean"], [data-theme="neon"]) .pcard-sub {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="ocean"] .pcard.extra {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.45), rgba(255, 255, 255, 0.08));
+  border-color: rgba(255, 160, 215, 0.6);
+  --main: #ff7ac8;
+}
+
+[data-theme="neon"] .pcard.extra {
+  background: linear-gradient(135deg, #a21caf, #ec4899);
+  border-color: rgba(255, 140, 205, 0.7);
+  --main: #f472b6;
+}
+
+/* ---------- quick action tiles ---------- */
+[data-theme="ocean"] .qa-tile {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+[data-theme="ocean"] .qa-tile.slate {
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+}
+
+[data-theme="neon"] .qa-tile.blue {
+  background: linear-gradient(135deg, #ff4d6d, #ff7a8a);
+}
+[data-theme="neon"] .qa-tile.teal {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+}
+[data-theme="neon"] .qa-tile.purple {
+  background: linear-gradient(135deg, #6d28d9, #4c1d95);
+}
+[data-theme="neon"] .qa-tile.slate {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+}
+
+/* ---------- neon buttons ---------- */
+[data-theme="neon"] :is(.btn, .btn-primary, .qa-primary),
+[data-theme="neon"] :is(.btn, .btn-primary, .qa-primary):hover {
+  background: linear-gradient(135deg, #7c3aed, #c026d3);
+}
+
+[data-theme="neon"] :is(.btn, .btn-primary, .qa-primary):hover {
+  filter: brightness(1.12);
+}
+
+/* ================= PALETTE MENU (top right) ================= */
+.palette-wrap {
+  position: relative;
+}
+
+.palette-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  min-width: 210px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 8px;
+  z-index: 30;
+}
+
+.palette-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 10px 8px;
+}
+
+.palette-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-family: inherit;
+  text-align: left;
+}
+
+.palette-opt:hover {
+  background: var(--accent-soft);
+}
+
+.palette-opt.active {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.palette-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.palette-check {
+  margin-left: auto;
+  color: var(--accent);
+}
+
+/* ================= LIGHT = GREEN ECO ================= */
+html[data-theme="light"] {
+  --page-bg: linear-gradient(180deg, #f8fcf4 0%, #f3f9ec 55%, #e0f0cf 100%);
+  --card: #ffffff;
+  --text: #1c3a24;
+  --muted: #6b8272;
+  --border: #dcebd2;
+  --input-bg: #f6fbf1;
+  --accent: #2a8f40;
+  --accent-dark: #207a34;
+  --accent-soft: #e3f3d8;
+  --shadow: 0 6px 22px rgba(47, 110, 50, 0.1);
+  --logo-bg: linear-gradient(135deg, #4cc05a, #2a8f40);
+
+  --side-bg: linear-gradient(180deg, #f6fbf1 0%, #e6f3da 100%);
+  --side-text: #1f3d26;
+  --side-muted: #7a9580;
+  --side-hover: rgba(47, 158, 68, 0.1);
+  --side-active: linear-gradient(90deg, #d6ecc4, #e2f2d4);
+  --side-card: rgba(47, 158, 68, 0.1);
+
+  --danger-bg: #fde8e8;
+  --danger-text: #b42318;
+
+  --high-bg: #fff3f1;
+  --high-border: #f6d2cb;
+  --high-main: #e5484d;
+  --med-bg: #fffaf0;
+  --med-border: #f5e3b8;
+  --med-main: #e8920c;
+  --low-bg: #f1faeb;
+  --low-border: #cfe8bd;
+  --low-main: #2a8f40;
+  --total-bg: #eef8f3;
+  --total-border: #c9e6d6;
+  --total-main: #1f8a70;
+
+  color-scheme: light;
+}
+
+/* the sidebar is light now, so its text must be dark */
+html[data-theme="light"] .sidebar {
+  border-right: 1px solid #dcebd2;
+}
+
+html[data-theme="light"] .logo-name,
+html[data-theme="light"] .admin-box strong {
+  color: #14532d;
+}
+
+html[data-theme="light"] .side-link.active {
+  color: #14532d;
+}
+
+html[data-theme="light"] .admin-box {
+  color: #e8920c;
+}
+
+/* ================= METALLIC ================= */
+html[data-theme="metal"] {
+  --page-bg:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 3px),
+    linear-gradient(135deg, #1c212a 0%, #2b313b 35%, #151a21 70%, #0c0f14 100%);
+  --card: linear-gradient(160deg, #1f252e 0%, #12171e 100%);
+  --text: #e8edf5;
+  --muted: #9aa5b5;
+  --border: rgba(160, 175, 195, 0.22);
+  --input-bg: #0f141b;
+  --accent: #3d8bff;
+  --accent-dark: #2b6fd6;
+  --accent-soft: rgba(61, 139, 255, 0.16);
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --logo-bg: linear-gradient(135deg, #4aa3ff, #1e5fd8);
+
+  --side-bg: linear-gradient(180deg, #11161e 0%, #0a0e14 100%);
+  --side-text: #d4dbe6;
+  --side-muted: #7f8a9a;
+  --side-hover: rgba(255, 255, 255, 0.07);
+  --side-active: linear-gradient(90deg, #2c527d, #1b3552);
+  --side-card: rgba(255, 255, 255, 0.07);
+
+  --danger-bg: rgba(255, 90, 95, 0.18);
+  --danger-text: #ffb3b5;
+
+  --high-bg:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(145deg, #4a3238, #262027);
+  --high-border: rgba(255, 90, 95, 0.7);
+  --high-main: #ff5a5f;
+  --med-bg:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(145deg, #4b4234, #29251f);
+  --med-border: rgba(245, 165, 36, 0.7);
+  --med-main: #f5a524;
+  --low-bg:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(145deg, #2f4057, #1f2733);
+  --low-border: rgba(74, 163, 255, 0.7);
+  --low-main: #4aa3ff;
+  --total-bg:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(145deg, #3a414c, #20252d);
+  --total-border: rgba(160, 185, 215, 0.55);
+  --total-main: #7fb6ff;
+
+  color-scheme: dark;
+}
+
+/* brushed-steel cards with a colored glow */
+html[data-theme="metal"] .pcard {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 22px rgba(0, 0, 0, 0.5),
+    0 0 18px color-mix(in srgb, var(--main) 22%, transparent);
+}
+
+html[data-theme="metal"] :is(.pcard-head, .pcard-arrow) {
+  color: #e8edf5;
+}
+
+html[data-theme="metal"] .pcard-sub {
+  color: rgba(232, 237, 245, 0.7);
+}
+
+html[data-theme="metal"] .pcard.extra {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(145deg, #3a3f5a, #22263a);
+  border-color: rgba(169, 156, 255, 0.65);
+  --main: #a99cff;
+}
+
+/* panels and sidebar get a thin steel edge */
+html[data-theme="metal"] :is(.dpanel, .tasks-layout, .cal-card, .form-card, .acc-card, .hist-panel, .notif-panel, .card) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+html[data-theme="metal"] .sidebar {
+  border-right: 1px solid rgba(180, 195, 215, 0.25);
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme="metal"] .side-link.active {
+  box-shadow: inset 0 0 0 1px rgba(100, 170, 255, 0.35), 0 0 14px rgba(61, 139, 255, 0.25);
+}
+
+/* steel-blue buttons */
+html[data-theme="metal"] :is(.btn, .btn-primary, .qa-primary),
+html[data-theme="metal"] :is(.btn, .btn-primary, .qa-primary):hover {
+  background: linear-gradient(180deg, #5aa6ff 0%, #2b6fd6 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+html[data-theme="metal"] :is(.btn, .btn-primary, .qa-primary):hover {
+  filter: brightness(1.1);
+}
+
+html[data-theme="metal"] .qa-tile.slate {
+  background: linear-gradient(180deg, #8591a3, #515b69);
+}
+
+/* Low is blue in this design, so "Completed" gets its own green */
+html[data-theme="metal"] .badge.status-completed {
+  background: color-mix(in srgb, #34d399 18%, transparent);
+  color: #34d399;
+}

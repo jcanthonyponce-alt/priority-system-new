@@ -1,0 +1,62 @@
+.cat-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: color-mix(in srgb, var(--c) 16%, transparent);
+  color: var(--c);
+}
+
+html[data-theme="light"] .cat-tag {
+  color: color-mix(in srgb, var(--c) 68%, #000);
+}
+
+/* ---------- Task Categories box ---------- */
+.cat-list {
+  margin-top: 4px;
+}
+
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.cat-row:first-child {
+  border-top: none;
+}
+
+.cat-row:hover .cat-name {
+  color: var(--accent);
+}
+
+.cat-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--c) 18%, transparent);
+  color: var(--c);
+}
+
+html[data-theme="light"] .cat-ico {
+  color: color-mix(in srgb, var(--c) 68%, #000);
+}
+
+.cat-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.cat-count {
+  font-weight: 700;
+}

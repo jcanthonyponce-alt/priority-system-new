@@ -1,0 +1,113 @@
+/* ---------- theme icons (top right) ---------- */
+.theme-pill {
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.tp-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tp-btn:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tp-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- logout confirmation ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 14, 32, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal {
+  width: 100%;
+  max-width: 380px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.modal-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--high-main) 15%, transparent);
+  color: var(--high-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.modal h3 {
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+}
+
+.modal p {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 11px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.m-cancel {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.m-cancel:hover {
+  background: var(--accent-soft);
+}
+
+.m-confirm {
+  border: none;
+  background: var(--high-main);
+  color: #fff;
+}
+
+.m-confirm:hover {
+  filter: brightness(1.1);
+}
