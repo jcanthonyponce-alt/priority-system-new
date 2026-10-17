@@ -117,7 +117,7 @@ export default function MyTasks() {
 
             <div className="tl-filters">
               <select value={status} onChange={(e) => setStatus(e.target.value)}>
-                <option value="">All statuses</option>
+                <option value="">All status</option>
                 <option value="pending">Pending</option>
                 <option value="in-progress">In progress</option>
                 <option value="completed">Completed</option>
