@@ -1,6 +1,7 @@
 const express = require("express");
 const { db, save } = require("../store");
 const { authRequired, adminRequired } = require("../middleware");
+const { notify } = require("../notify");
 const authRouter = require("./auth");
 const tasksRouter = require("./tasks");
 
@@ -32,12 +33,40 @@ router.get("/users", (req, res) => {
   res.json({ users });
 });
 
+// Make a user an administrator, or make an administrator a normal user again
+router.put("/users/:id/role", (req, res) => {
+  const { role } = req.body;
+  if (role !== "admin" && role !== "user") {
+    return res.status(400).json({ error: "Role must be admin or user" });
+  }
+
+  const user = db.users.find((u) => u.id === req.params.id);
+  if (!user) return res.status(404).json({ error: "User not found" });
+
+  if (user.id === req.user.id) {
+    return res.status(400).json({ error: "You cannot change your own role" });
+  }
+  if (user.role === role) {
+    return res.status(400).json({ error: `${user.username} is already ${role === "admin" ? "an admin" : "a normal user"}` });
+  }
+
+  user.role = role;
+  save();
+  notify(
+    user.id,
+    role === "admin"
+      ? "You are now an administrator"
+      : "Your administrator access was removed"
+  );
+  res.json({ user: { id: user.id, username: user.username, role: user.role } });
+});
+
 // Deleting a user moves all their tasks to the archive
 router.delete("/users/:id", (req, res) => {
   const user = db.users.find((u) => u.id === req.params.id);
   if (!user) return res.status(404).json({ error: "User not found" });
   if (user.role === "admin") {
-    return res.status(400).json({ error: "Admin accounts cannot be deleted" });
+    return res.status(400).json({ error: "Admin accounts cannot be deleted. Remove admin access first." });
   }
 
   const now = new Date().toISOString();
